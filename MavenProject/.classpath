@@ -26,7 +26,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
-			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -51,5 +50,7 @@
 	<classpathentry kind="lib" path="E:/eclipse/libraries/libs/mongodb-driver-core-3.3.0.jar"/>
 	<classpathentry kind="lib" path="E:/eclipse/libraries/libs/testng-6.9.10.jar"/>
 	<classpathentry kind="lib" path="E:/eclipse/libraries/libs/okhttp-3.12.0.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse/eclipse-workspace/BrokerBee/lib/org.testng_6.14.2.r201802161450.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse/libraries/libs/xml-apis-2.0.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

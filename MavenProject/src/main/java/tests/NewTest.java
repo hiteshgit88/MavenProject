@@ -1,11 +1,14 @@
 package tests;
  
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.AfterTest;
+
 import com.gargoylesoftware.htmlunit.Page;
 import com.sun.tools.javac.util.List;
 import org.testng.AssertJUnit;
@@ -21,43 +24,43 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.io.IOException;
+import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.nio.charset.StandardCharsets;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
 
+
+import tests.JiraXmlDemo;
  
 public class NewTest {
  
- public WebDriver driver;
+ public RemoteWebDriver driver;
+
  
   @Test
   public void CreateAPP() throws InterruptedException {
-	  Base64.Encoder encoder = Base64.getEncoder();
-	  String normalString = "rutam.desai@mybrokerbee.com:rutammybrokerbee";
-	  String encodedString = encoder.encodeToString(
-	  normalString.getBytes(StandardCharsets.UTF_8) );
-	  System.out.println(new String(encodedString));
-	  
-	  OkHttpClient client = new OkHttpClient();
-	  MediaType mediaType = MediaType.parse("application/json");
-	  RequestBody body = RequestBody.create(mediaType, "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"MYB\"\r\n       },\r\n       \"summary\": \"Test Issues created from Rest API - Automation\",\r\n       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}");
-	  Request request = new Request.Builder()
-	    .url("https://teneda.atlassian.net/rest/api/2/issue")
-	    .post(body)
-	    .addHeader("Content-Type", "application/json")
-	    .addHeader("Authorization", "Basic "+encodedString)
-	    .build();
 
-	  try {
-		Response response = client.newCall(request).execute();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	  
+//	  
 //	  driver.get("https://stag-app.mybrokerbee.com/app/Login.php");
 //		driver.manage().window().maximize();
 //
@@ -408,20 +411,60 @@ public class NewTest {
 //				driver.findElement(By.className("save")).click();
 //			}
 //		}
-		
+	
+	  
+	  System.out.println("JIRA Server returns:\n");
   }
   
-  @BeforeClass
-  public void beforeClass() {
+  @BeforeTest
+  public void beforeTest() {
    
 	  System.setProperty("webdriver.chrome.driver", "E:\\eclipse\\bin\\chromedriver.exe");
 	  driver = new ChromeDriver();
    
   }
  
-  @AfterClass
-  public void afterClass() {
+  @AfterTest
+  
+  public void extendreport() throws IOException{
+	  
+	
+  JiraXmlDemo rundemom = new JiraXmlDemo();
+  rundemom.runDemo(driver);
+  rundemom.getXmlReport(driver);
+  String xmlReport = null;
+  rundemom.parseXmlReport(xmlReport);
+  String scriptStartTime = null;
+  rundemom.createJiraIssue(scriptStartTime);
+  
+  
+  
+  }
+//  Base64.Encoder encoder = Base64.getEncoder();
+//  String normalString = "rutam.desai@mybrokerbee.com:rutammybrokerbee";
+//  String encodedString = encoder.encodeToString(
+//  normalString.getBytes(StandardCharsets.UTF_8) );
+//  System.out.println(new String(encodedString));
+//  
+//  OkHttpClient client = new OkHttpClient();
+//  MediaType mediaType = MediaType.parse("application/json");
+//  RequestBody body = RequestBody.create(mediaType, "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"MYB\"\r\n       },\r\n       \"summary\": \"Test Issues created from Rest API - Automation\",\r\n       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}");
+//  Request request = new Request.Builder()
+//    .url("https://teneda.atlassian.net/rest/api/2/issue")
+//    .post(body)
+//    .addHeader("Content-Type", "application/json")
+//    .addHeader("Authorization", "Basic "+encodedString)
+//    .build();
+//
+//  try {
+//	Response response = client.newCall(request).execute();
+//} catch (IOException e) {
+//	// TODO Auto-generated catch block
+//	e.printStackTrace();
+//}
+  public void afterTest() {
    driver.quit();
   }
+ 
  
 }
