@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import org.openqa.selenium.JavascriptExecutor;
@@ -419,27 +420,23 @@ public class NewTest {
 		} catch (Exception ex) { 
 			System.out.println("Got exception " + ex); }
 }
-//  Base64.Encoder encoder = Base64.getEncoder();
-//  String normalString = "rutam.desai@mybrokerbee.com:rutammybrokerbee";
-//  String encodedString = encoder.encodeToString(
-//  normalString.getBytes(StandardCharsets.UTF_8) );
-//  System.out.println(new String(encodedString));
-//  
-//  OkHttpClient client = new OkHttpClient();
-//  MediaType mediaType = MediaType.parse("application/json");
-//  RequestBody body = RequestBody.create(mediaType, "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"MYB\"\r\n       },\r\n       \"summary\": \"Test Issues created from Rest API - Automation\",\r\n       \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}");
-//  Request request = new Request.Builder()
-//    .url("https://teneda.atlassian.net/rest/api/2/issue")
-//    .post(body)
-//    .addHeader("Content-Type", "application/json")
-//    .addHeader("Authorization", "Basic "+encodedString)
-//    .build();
-//
-//  try {
-//	Response response = client.newCall(request).execute();
-//} catch (IOException e) {
-//	// TODO Auto-generated catch block
-//	e.printStackTrace();
+
+//public String getXmlReport(RemoteWebDriver driver) throws IOException {
+//		// this function will retrieve and return the xml script execution report from the webdriver
+//		
+//		String report = null;
+//		try { 	
+//			String command = "mobile:report:download"; 
+//			Map<String, Object> params = new HashMap<>(); 
+//			params.put("type", "xml"); 
+//			report = (String)driver.executeScript(command, params);
+//			
+//		} 
+//		catch (Exception ex) { 
+//			System.out.println("Got exception " + ex); 
+//		}
+//		String result = new String(OutputType.BYTES.convertFromBase64Png(report), StandardCharsets.UTF_8);
+//		return result;
 //}
 
   }
