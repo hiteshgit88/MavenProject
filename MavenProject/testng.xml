@@ -1,8 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite" parallel="false">
   <test name="Test">
+  <parameter name="type" value="xml"/>
+  <parameter name="fileName" value="reportxml"/>
     <classes>
-      <class name="tests.JiraXmlDemo"/>
+      <class name="tests.NewTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
