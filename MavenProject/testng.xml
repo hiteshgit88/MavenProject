@@ -3,10 +3,10 @@
   <test name="Test">
   <parameter name="type" value="xml"/>
    <parameter name="fileName" value="reportxml"/>
-  <parameter name="platformName" value="Windows" />
+<!--   <parameter name="platformName" value="Windows" />
   <parameter name="platformVersion" value="10" />
   <parameter name="browserName" value="Chrome" />
-  <parameter name="browserVersion" value="" />
+  <parameter name="browserVersion" value="" />	 -->
     <classes>
       <class name="tests.NewTest"/>
     </classes>
